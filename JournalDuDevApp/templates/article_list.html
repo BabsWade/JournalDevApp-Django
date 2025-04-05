@@ -1,0 +1,23 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}Articles - Journal du Dev{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="page-title">Articles</h1>
+        <ul class="article-list">
+            {% for article in articles %}
+                <li class="article-item">
+                    <div class="article-image">
+                        <img src="{{ article.image.url }}" alt="Article Image" class="article-img">
+                    </div>
+                    <div class="article-details">
+                        <h2><a href="{% url 'article_detail' article.pk %}" class="article-title">{{ article.titre }}</a></h2>
+                        <p class="article-meta"><strong>Auteur:</strong> {{ article.auteur }}</p>
+                        <p class="article-meta"><strong>Date:</strong> {{ article.date_publication }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

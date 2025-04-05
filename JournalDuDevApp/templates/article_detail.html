@@ -1,0 +1,29 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}{{ article.titre }} - JDD{% endblock %}
+
+{% block content %}
+  <div class="article-detail-container">
+    <h1 class="article-title">{{ article.titre }}</h1>
+
+    <div class="article-meta">
+      <p><strong>Auteur:</strong> {{ article.auteur }}</p>
+      <p><strong>Date de publication:</strong> {{ article.date_publication }}</p>
+    </div>
+
+    <div class="article-image">
+      <img src="{{ article.image.url }}" alt="Article Image" class="article-img">
+    </div>
+
+    <div class="article-content">
+      <p>{{ article.contenu }}</p>
+    </div>
+
+    <div class="article-actions">
+      <a href="{% url 'article_edit' article.pk %}" class="btn btn-primary">Modifier</a>
+      <a href="{% url 'article_delete' article.pk %}" class="btn btn-danger">Supprimer</a>
+      <a href="{% url 'article_list' %}" class="btn btn-secondary">Retour à la liste des articles</a>
+    </div>
+  </div>
+{% endblock %}
+

@@ -1,0 +1,21 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <div class="form-container">
+    <h1>{% if article %}Modifier l'article{% else %}Créer un nouvel article{% endif %}</h1>
+
+    <form method="POST" enctype="multipart/form-data" class="article-form">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.as_p }}
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">
+          {% if article %}Enregistrer les modifications{% else %}Créer l'article{% endif %}
+        </button>
+        <a href="{% url 'article_list' %}" class="btn btn-secondary">Annuler</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

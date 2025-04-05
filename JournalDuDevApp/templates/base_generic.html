@@ -1,0 +1,32 @@
+<!-- base_generic.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}JDD{% endblock %}</title>
+ {% load static %}  <!-- Charge les fichiers statiques de Django -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">  <!-- Lien vers ton fichier CSS -->
+</head>
+<body>
+  <header class="site-header">
+  <a href="{% url 'article_list' %}" class="site-logo">
+    <h1 class="site-title">JDD</h1> <!-- Le logo est en fait le titre -->
+  </a>
+  <nav class="site-nav">
+    <!-- <a class="accueil" href="{% url 'article_list' %}" class="nav-link">Accueil</a>-->
+   <!-- <a href="{% url 'article_create' %}" class="nav-link">Créer un article</a>-->
+  </nav>
+</header>
+
+
+  <div class="content-wrapper">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <footer class="site-footer">
+    <p>Blog créé avec Django. &copy; 2025</p>
+  </footer>
+</body>
+</html>

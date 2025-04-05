@@ -1,0 +1,15 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <div class="delete-container">
+    <h1>Êtes-vous sûr de vouloir supprimer l'article : <strong>{{ article.titre }}</strong> ?</h1>
+
+    <form method="POST" class="delete-form">
+      {% csrf_token %}
+      <div class="form-actions">
+        <button type="submit" class="btn btn-danger">Confirmer la suppression</button>
+        <a href="{% url 'article_list' %}" class="btn btn-secondary">Annuler</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}
