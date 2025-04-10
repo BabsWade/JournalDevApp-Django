@@ -23,6 +23,7 @@ from JournalDuDevApp import views
 from django.conf.urls.static import static
 
 from JournalDuDevProject import settings
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +32,8 @@ urlpatterns = [
     path('article/new/', views.ArticleCreateView.as_view(), name='article_create'),
     path('article/<int:pk>/edit/', views.ArticleUpdateView.as_view(), name='article_edit'),
     path('article/<int:pk>/delete/', views.ArticleDeleteView.as_view(), name='article_delete'),
+path('ckeditor/', include('ckeditor_uploader.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

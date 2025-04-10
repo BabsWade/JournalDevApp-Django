@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CKEDITOR_UPLOAD_PATH = "uploads/ckeditor/"
 
 # Application definition
 
@@ -38,7 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'JournalDuDevApp.apps.JournaldudevappConfig',
+'ckeditor',
+       'ckeditor_uploader',
 ]
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Full',  # Vous pouvez choisir différents outils de la barre de menu, ici 'Full' pour tous les outils
+        'width': '100%',
+        'height': 300,
+    },
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -105,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'UTC'
 

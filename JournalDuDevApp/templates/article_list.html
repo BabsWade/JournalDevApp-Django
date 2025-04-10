@@ -8,13 +8,15 @@
         <ul class="article-list">
             {% for article in articles %}
                 <li class="article-item">
-                    <div class="article-image">
+                    <a href="{% url 'article_detail' article.pk %}"><div class="article-image">
                         <img src="{{ article.image.url }}" alt="Article Image" class="article-img">
-                    </div>
+
+                    </div></a>
                     <div class="article-details">
-                        <h2><a href="{% url 'article_detail' article.pk %}" class="article-title">{{ article.titre }}</a></h2>
-                        <p class="article-meta"><strong>Auteur:</strong> {{ article.auteur }}</p>
-                        <p class="article-meta"><strong>Date:</strong> {{ article.date_publication }}</p>
+                       <a href="{% url 'article_detail' article.pk %}" class="article-title">{{ article.titre }}</a>
+                        <p class="article-content">{{ article.contenu|striptags|truncatewords:20|safe }}</p>
+                        <p class="article-meta"><strong>Auteur:</strong> {{ article.auteur }}<br><strong>Date:</strong> {{ article.date_publication|date:"d M Y" }}</p>
+
                     </div>
                 </li>
             {% endfor %}
